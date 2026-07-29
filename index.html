@@ -83,7 +83,7 @@
         #cover.hidden { opacity: 0; pointer-events: none; }
         
         .cover-titles { position: relative; z-index: 10; text-align: center; transform: translateY(var(--titulos-mover-arriba-abajo)); }
-        .cover-name { font-family: var(--fuente-elegante); font-size: 4rem; color: var(--color-secundario-rosa-fuerte); margin: 10px 0;}
+        .cover-name { font-family: var(--fuente-elegante); font-size: 2.5rem; color: var(--color-secundario-rosa-fuerte); margin: 10px 0;}
         
         .envelope-wrapper { position: relative; margin: 60px 0 30px; display: flex; justify-content: center; align-items: flex-end; transform: translateY(var(--sobre-mover-arriba-abajo)); z-index: 10;}
         
@@ -217,8 +217,8 @@
         <!-- PORTADA -->
         <div id="cover" onclick="openInvitation()">
             <div class="cover-titles">
-                <p style="color: var(--color-dorado-brillante); text-transform: uppercase; letter-spacing: 2px; font-size: var(--texto-mis15-tamano);">Mis 15 Años</p>
-                <h1 class="cover-name">Martina</h1>
+                <p style="color: var(--color-dorado-brillante); text-transform: uppercase; letter-spacing: 2px; font-size: var(--texto-mis15-tamano);"></p>
+                <h1 class="cover-name">Invitación especial</h1>
             </div>
             
             <div class="envelope-wrapper">
@@ -231,7 +231,7 @@
                 </div>
             </div>
 
-            <img src="Princesasobre.png" id="princesa-sobre" alt="Princesa" onerror="this.style.display='none'">
+            <img src="" id="princesa-sobre" alt="Princesa" onerror="this.style.display='none'">
             <p class="toca-abrir">TOCA PARA ABRIR</p>
         </div>
 
@@ -241,7 +241,7 @@
 
                 <section class="gold-section" id="sec-intro" style="margin-top: 30px;">
                     <p style="text-transform: uppercase; letter-spacing: 2px; color: var(--color-secundario-rosa-fuerte); font-weight: bold;">Mis 15 años</p>
-                    <p class="title-fancy" style="font-size: 3.8rem; margin: 10px 0;">Martina</p>
+                    <p class="title-fancy" style="font-size: 3.8rem; margin: 10px 0;">Nacha</p>
                     <p style="font-style: italic;">"Hay momentos inolvidables que se atesoran en el corazón para siempre,<br> acompáñame a vivir el mío."</p>
                 </section>
 
@@ -358,24 +358,24 @@
     <script>
         const CONF_INVITACION = {
             letraSello: "M",               
-            mostrarFotoPrincipal: true,    /* (Petición 5) True = Muestra la foto del marco. False = La oculta. */
+            mostrarFotoPrincipal: false,    /* (Petición 5) True = Muestra la foto del marco. False = La oculta. */
             mostrarGaleria: true,          /* (Petición 1) True = Muestra la galería. False = La oculta. */
             mostrarMusica: true,           /* (Petición 2) True = Permite reproducir música y muestra el icono. False = Desactiva ambos. */
             
-            confirmarConFormulario: false, 
+            confirmarConFormulario: true, 
             mostrarSugerenciaCancion: true,
-            mostrarAlbumFotos: true,       
-            mostrarInstagram: true,  
+            mostrarAlbumFotos: false,       
+            mostrarInstagram: false,  
             mostrarIconoAsistencia: true,      
             
             mesEvento: 12,                  
             anioEvento: 2026,              
-            fechaExactaEvento: "december 10, 2026 20:00:00" 
+            fechaExactaEvento: "setember 12, 2026 21:00:00" 
         };
 
         const CONFIG_DECORACIONES = {
             secIntro: {       
-                imagen: "mariposas1.png", 
+                imagen: "", 
                 tamano: "112px",
                 anclajeVertical: "arriba", 
                 distanciaVertical: "-80px",   
@@ -385,7 +385,7 @@
                 animacionFlotar: true 
             },
             secFotoPrincipal: {  
-                imagen: "flores4.png",  
+                imagen: "",  
                 tamano: "120px",
                 anclajeVertical: "arriba", 
                 distanciaVertical: "-30px", 
@@ -395,7 +395,7 @@
                 animacionFlotar: false 
             },
             secFrase: {       
-                imagen: "flores4.png",
+                imagen: "",
                 tamano: "150px",
                 anclajeVertical: "arriba",
                 distanciaVertical: "-0px", 
@@ -405,7 +405,7 @@
                 animacionFlotar: false
             },
             secReserva: {     
-                imagen: "mariposadorada.png",
+                imagen: "",
                 tamano: "80px",
                 anclajeVertical: "arriba",
                 distanciaVertical: "-40px",
@@ -425,7 +425,7 @@
                 animacionFlotar: false
             },
             secFiesta: {      
-                imagen: "flores3.png",
+                imagen: "",
                 tamano: "130px",
                 anclajeVertical: "arriba",
                 distanciaVertical: "-40px",
@@ -435,7 +435,7 @@
                 animacionFlotar: false
             },
             secAsistencia: {  
-                imagen: "flormariposa.png", 
+                imagen: "", 
                 tamano: "120px",
                 anclajeVertical: "abajo",
                 distanciaVertical: "-30px",
@@ -455,7 +455,7 @@
                 animacionFlotar: false
             },
             secAlbum: {       
-                imagen: "mariposadorada.png", 
+                imagen: "", 
                 tamano: "80px",
                 anclajeVertical: "arriba",
                 distanciaVertical: "-20px",
@@ -475,7 +475,7 @@
                 animacionFlotar: false
             },
             secVestimenta: {  
-                imagen: "rosas.png", 
+                imagen: "", 
                 tamano: "100px",
                 anclajeVertical: "abajo",
                 distanciaVertical: "0px",
@@ -495,7 +495,7 @@
                 animacionFlotar: false
             },
             secDespedida: {   
-                imagen: "Princesasobre.png", 
+                imagen: "", 
                 tamano: "400px",             
                 anclajeVertical: "abajo",
                 distanciaVertical: "-60px",    
