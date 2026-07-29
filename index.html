@@ -36,7 +36,7 @@
             --sobre-escala: 1; 
             --sobre-mover-arriba-abajo: -80px; 
             --toca-abrir-mover-arriba-abajo: -100px; 
-            --toca-abrir-mover-izquierda-derecha: -50px; 
+            --toca-abrir-mover-izquierda-derecha: 0px; 
 
             /* 5. DISEÑO DE LAS CAJAS GENERALES */
             --cajas-fuente: var(--fuente-texto);
@@ -120,7 +120,7 @@
             font-family: var(--cajas-fuente); font-size: var(--cajas-tamano-texto); line-height: var(--cajas-interlineado);
         }
 
-        .title-fancy { font-family: var(--fuente-elegante); font-size: 3rem; color: var(--color-dorado-brillante); margin-bottom: 10px; }
+        .title-fancy { font-family: var(--fuente-elegante); font-size: 3rem; color: var(--color-dorado-brillante); margin-bottom: 0px; }
         .txt-reserva { font-family: var(--reserva-fecha-fuente); color: var(--reserva-fecha-color); font-size: var(--reserva-fecha-tamano); margin-bottom: -5px; }
         .txt-mes { font-family: var(--mes-fuente); color: var(--mes-color); font-size: var(--mes-tamano); margin-bottom: 20px; line-height: 1; }
         .txt-faltan { font-family: var(--faltan-fuente); color: var(--faltan-color); font-size: var(--faltan-tamano); margin-bottom: 10px; }
@@ -333,8 +333,8 @@
 
                 <section class="gold-section" id="sec-vestimenta">
                     <p class="title-fancy">Vestimenta</p>
-                    <p style="font-weight: bold; text-transform: uppercase; font-size: 1.2rem; margin-bottom: 5px;">Formal</p>
-                    <p>Reservamos el uso<br> del color rosado,<br> exclusivamene para mi <br>vestimenta</p>
+                    <p style="font-weight: bold; text-transform: uppercase; font-size: 1.2rem; margin-bottom: 5px;">Semiformal</p>
+                    <p>(corto)</p>
                 </section>
 
                 <section class="gold-section" id="sec-regalo">
@@ -359,7 +359,7 @@
         const CONF_INVITACION = {
             letraSello: "M",               
             mostrarFotoPrincipal: false,    /* (Petición 5) True = Muestra la foto del marco. False = La oculta. */
-            mostrarGaleria: true,          /* (Petición 1) True = Muestra la galería. False = La oculta. */
+            mostrarGaleria: false,          /* (Petición 1) True = Muestra la galería. False = La oculta. */
             mostrarMusica: true,           /* (Petición 2) True = Permite reproducir música y muestra el icono. False = Desactiva ambos. */
             
             confirmarConFormulario: true, 
