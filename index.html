@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Se agregó maximum-scale y user-scalable para evitar zooms por doble toque involuntario en móviles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Invitación Mis 15 Años</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
@@ -25,7 +26,7 @@
             --fuente-texto: 'Playfair Display', serif;
 
             /* 3. IMÁGENES Y POSICIÓN DE LA PRINCESA EN PORTADA DEL SOBRE */
-            --fondo-portada-img: url('fondo de sobre.jpg'); 
+            --fondo-portada-img: url('fondo de sobre.jpeg'); 
             --princesa-sobre-ancho: 400px; 
             --princesa-sobre-top: 280px;  
             --princesa-sobre-left: 70%;    
@@ -36,7 +37,7 @@
             --sobre-escala: 1; 
             --sobre-mover-arriba-abajo: -80px; 
             --toca-abrir-mover-arriba-abajo: -100px; 
-            --toca-abrir-mover-izquierda-derecha: -40px; 
+            --toca-abrir-mover-izquierda-derecha: 0px; 
 
             /* 5. DISEÑO DE LAS CAJAS GENERALES */
             --cajas-fuente: var(--fuente-texto);
@@ -68,22 +69,25 @@
             position: relative; box-shadow: 0 0 20px rgba(0,0,0,0.5); overflow: hidden; 
         }
 
-        /* FONDO DE VIDEO */
-        .animated-bg-wrapper { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1; overflow: hidden; }
+        /* FONDO DE VIDEO CORREGIDO PARA EVITAR ZOOMS */
+        .animated-bg-wrapper { 
+            position: fixed; top: 0; left: 50%; transform: translateX(-50%); 
+            width: 100%; max-width: 450px; height: 100vh; z-index: 1; overflow: hidden; 
+        }
         .animated-bg-wrapper video { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; }
 
-        /* PORTADA (SOBRE) */
+        /* PORTADA (SOBRE) CORREGIDA */
         #cover {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--color-principal-rosa);
+            position: absolute; top: 0; left: 0; width: 100%; height: 100vh; background-color: var(--color-principal-rosa);
             background-image: var(--fondo-portada-img); background-size: cover; background-position: center;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             z-index: 100; cursor: pointer; transition: opacity 0.8s ease-in-out;
+            -webkit-tap-highlight-color: transparent; touch-action: manipulation;
         }
-        /* CORRECCIÓN: Se quitó el transform: translateY para evitar el efecto de zoom brusco */
         #cover.hidden { opacity: 0; pointer-events: none; }
         
         .cover-titles { position: relative; z-index: 10; text-align: center; transform: translateY(var(--titulos-mover-arriba-abajo)); }
-        .cover-name { font-family: var(--fuente-elegante); font-size: 4rem; color: var(--color-secundario-rosa-fuerte); margin: 10px 0;}
+        .cover-name { font-family: var(--fuente-elegante); font-size: 2.5rem; color: var(--color-secundario-rosa-fuerte); margin: 10px 0;}
         
         .envelope-wrapper { position: relative; margin: 60px 0 30px; display: flex; justify-content: center; align-items: flex-end; transform: translateY(var(--sobre-mover-arriba-abajo)); z-index: 10;}
         
@@ -120,7 +124,7 @@
             font-family: var(--cajas-fuente); font-size: var(--cajas-tamano-texto); line-height: var(--cajas-interlineado);
         }
 
-        .title-fancy { font-family: var(--fuente-elegante); font-size: 3rem; color: var(--color-dorado-brillante); margin-bottom: 10px; }
+        .title-fancy { font-family: var(--fuente-elegante); font-size: 3rem; color: var(--color-dorado-brillante); margin-bottom: 0px; }
         .txt-reserva { font-family: var(--reserva-fecha-fuente); color: var(--reserva-fecha-color); font-size: var(--reserva-fecha-tamano); margin-bottom: -5px; }
         .txt-mes { font-family: var(--mes-fuente); color: var(--mes-color); font-size: var(--mes-tamano); margin-bottom: 20px; line-height: 1; }
         .txt-faltan { font-family: var(--faltan-fuente); color: var(--faltan-color); font-size: var(--faltan-tamano); margin-bottom: 10px; }
@@ -217,8 +221,8 @@
         <!-- PORTADA -->
         <div id="cover" onclick="openInvitation()">
             <div class="cover-titles">
-                <p style="color: var(--color-dorado-brillante); text-transform: uppercase; letter-spacing: 2px; font-size: var(--texto-mis15-tamano);">Mis 15 Años</p>
-                <h1 class="cover-name">Martina</h1>
+                <p style="color: var(--color-dorado-brillante); text-transform: uppercase; letter-spacing: 2px; font-size: var(--texto-mis15-tamano);"></p>
+                <h1 class="cover-name">Invitación especial</h1>
             </div>
             
             <div class="envelope-wrapper">
@@ -231,7 +235,7 @@
                 </div>
             </div>
 
-            <img src="Princesasobre.png" id="princesa-sobre" alt="Princesa" onerror="this.style.display='none'">
+            <img src="" id="princesa-sobre" alt="Princesa" onerror="this.style.display='none'">
             <p class="toca-abrir">TOCA PARA ABRIR</p>
         </div>
 
@@ -241,7 +245,7 @@
 
                 <section class="gold-section" id="sec-intro" style="margin-top: 30px;">
                     <p style="text-transform: uppercase; letter-spacing: 2px; color: var(--color-secundario-rosa-fuerte); font-weight: bold;">Mis 15 años</p>
-                    <p class="title-fancy" style="font-size: 3.8rem; margin: 10px 0;">Martina</p>
+                    <p class="title-fancy" style="font-size: 3.8rem; margin: 10px 0;">Nacha</p>
                     <p style="font-style: italic;">"Hay momentos inolvidables que se atesoran en el corazón para siempre,<br> acompáñame a vivir el mío."</p>
                 </section>
 
@@ -251,7 +255,7 @@
 
                 <section class="gold-section" id="sec-reserva">
                     <p class="txt-reserva">Agendá la fecha</p>
-                    <p class="txt-mes">Noviembre 2026</p>
+                    <p class="txt-mes">Setiembre 2026</p>
                     
                     <table class="calendar">
                         <thead><tr> <th>L</th> <th>M</th> <th>M</th> <th>J</th> <th>V</th> <th>S</th> <th>D</th> </tr></thead>
@@ -333,8 +337,8 @@
 
                 <section class="gold-section" id="sec-vestimenta">
                     <p class="title-fancy">Vestimenta</p>
-                    <p style="font-weight: bold; text-transform: uppercase; font-size: 1.2rem; margin-bottom: 5px;">Formal</p>
-                    <p>Reservamos el uso<br> del color rosado,<br> exclusivamene para mi <br>vestimenta</p>
+                    <p style="font-weight: bold; text-transform: uppercase; font-size: 1.2rem; margin-bottom: 5px;">Semiformal</p>
+                    <p>(corto)</p>
                 </section>
 
                 <section class="gold-section" id="sec-regalo">
@@ -348,8 +352,9 @@
                     <p style="font-size: 1.2rem; font-style: italic; margin-top: 10px;">"Los sueños<br> se hacen realidad <br>cuando se viven con ilusión..."</p>
                 </section>
 
-                <div style="text-align: center; margin-top: 50px; padding-bottom: 350px; position: relative; z-index: 5;" id="sec-despedida">
-                    <p class="title-fancy" style="font-size: 4rem; position: relative; z-index: 20;">¡Te espero!</p>
+                <!-- CORRECCIÓN DEL MARGEN ENORME (Cambiado padding-bottom a 60px) -->
+                <div style="text-align: center; margin-top: 50px; padding-bottom: 60px; position: relative; z-index: 5;" id="sec-despedida">
+                    <p class="title-fancy" style="font-size: 3.5rem; position: relative; z-index: 20;">¡Te espero!</p>
                 </div>
             </div>
         </div>
@@ -357,25 +362,25 @@
 
     <script>
         const CONF_INVITACION = {
-            letraSello: "M",               
-            mostrarFotoPrincipal: true,    /* (Petición 5) True = Muestra la foto del marco. False = La oculta. */
-            mostrarGaleria: true,          /* (Petición 1) True = Muestra la galería. False = La oculta. */
-            mostrarMusica: true,           /* (Petición 2) True = Permite reproducir música y muestra el icono. False = Desactiva ambos. */
+            letraSello: "N",               
+            mostrarFotoPrincipal: false,    
+            mostrarGaleria: false,          
+            mostrarMusica: false,           
             
-            confirmarConFormulario: false, 
+            confirmarConFormulario: true, 
             mostrarSugerenciaCancion: true,
-            mostrarAlbumFotos: true,       
-            mostrarInstagram: true,  
+            mostrarAlbumFotos: false,       
+            mostrarInstagram: false,  
             mostrarIconoAsistencia: true,      
             
-            mesEvento: 12,                  
+            mesEvento: 09,                  
             anioEvento: 2026,              
-            fechaExactaEvento: "december 10, 2026 20:00:00" 
+            fechaExactaEvento: "september 12, 2026 21:00:00" 
         };
 
         const CONFIG_DECORACIONES = {
             secIntro: {       
-                imagen: "mariposas1.png", 
+                imagen: "", 
                 tamano: "112px",
                 anclajeVertical: "arriba", 
                 distanciaVertical: "-80px",   
@@ -385,7 +390,7 @@
                 animacionFlotar: true 
             },
             secFotoPrincipal: {  
-                imagen: "flores4.png",  
+                imagen: "",  
                 tamano: "120px",
                 anclajeVertical: "arriba", 
                 distanciaVertical: "-30px", 
@@ -395,7 +400,7 @@
                 animacionFlotar: false 
             },
             secFrase: {       
-                imagen: "flores4.png",
+                imagen: "",
                 tamano: "150px",
                 anclajeVertical: "arriba",
                 distanciaVertical: "-0px", 
@@ -405,7 +410,7 @@
                 animacionFlotar: false
             },
             secReserva: {     
-                imagen: "mariposadorada.png",
+                imagen: "",
                 tamano: "80px",
                 anclajeVertical: "arriba",
                 distanciaVertical: "-40px",
@@ -425,7 +430,7 @@
                 animacionFlotar: false
             },
             secFiesta: {      
-                imagen: "flores3.png",
+                imagen: "",
                 tamano: "130px",
                 anclajeVertical: "arriba",
                 distanciaVertical: "-40px",
@@ -435,7 +440,7 @@
                 animacionFlotar: false
             },
             secAsistencia: {  
-                imagen: "flormariposa.png", 
+                imagen: "", 
                 tamano: "120px",
                 anclajeVertical: "abajo",
                 distanciaVertical: "-30px",
@@ -455,7 +460,7 @@
                 animacionFlotar: false
             },
             secAlbum: {       
-                imagen: "mariposadorada.png", 
+                imagen: "", 
                 tamano: "80px",
                 anclajeVertical: "arriba",
                 distanciaVertical: "-20px",
@@ -475,7 +480,7 @@
                 animacionFlotar: false
             },
             secVestimenta: {  
-                imagen: "rosas.png", 
+                imagen: "", 
                 tamano: "100px",
                 anclajeVertical: "abajo",
                 distanciaVertical: "0px",
@@ -495,10 +500,10 @@
                 animacionFlotar: false
             },
             secDespedida: {   
-                imagen: "Princesasobre.png", 
+                imagen: "", 
                 tamano: "400px",             
                 anclajeVertical: "abajo",
-                distanciaVertical: "-60px",    
+                distanciaVertical: "0px",    
                 anclajeHorizontal: "centro",
                 distanciaHorizontal: "0px",  
                 voltearEspejo: false,
@@ -521,12 +526,10 @@
         function aplicarConfiguracion() {
             document.getElementById('seal').innerText = CONF_INVITACION.letraSello;
 
-            // Oculta la foto principal si es falso
             if (!CONF_INVITACION.mostrarFotoPrincipal) {
                 document.getElementById('sec-foto-principal').style.display = 'none';
             }
             
-            // Oculta la galería si es falso
             if (!CONF_INVITACION.mostrarGaleria) {
                 document.getElementById('sec-galeria').style.display = 'none';
             }
@@ -578,7 +581,6 @@
                         img.src = config.imagen;
                         img.style.width = config.tamano;
                         
-                        // Protección anti íconos rotos en decoraciones dinámicas
                         img.onerror = function() { this.style.display = 'none'; };
                         
                         let imgClases = "decorador-img";
@@ -611,10 +613,13 @@
             setTimeout(() => {
                 cover.classList.add('hidden');
                 mainInvitation.style.display = 'block';
-                generateCalendar(CONF_INVITACION.mesEvento, CONF_INVITACION.anioEvento); 
+                
+                // CORRECCIÓN: Ahora el almanaque toma el día exacto de la configuración automáticamente
+                const diaEvento = new Date(CONF_INVITACION.fechaExactaEvento).getDate();
+                generateCalendar(CONF_INVITACION.mesEvento, CONF_INVITACION.anioEvento, diaEvento); 
+                
                 iniciarCuentaRegresiva();
                 
-                // Activar icono de música solo si la configuración lo permite
                 if (CONF_INVITACION.mostrarMusica) {
                     musicBtn.style.display = 'flex';
                     toggleMusic(); 
@@ -663,7 +668,8 @@
             }
         });
 
-        function generateCalendar(month, year) {
+        // CORRECCIÓN: Función adaptada para que resalte el día correcto
+        function generateCalendar(month, year, highlightDay) {
             const calendarBody = document.getElementById('calendarBody');
             calendarBody.innerHTML = ''; 
             const firstDay = (new Date(year, month - 1)).getDay(); 
@@ -680,7 +686,9 @@
                     } else {
                         let cell = document.createElement('td');
                         let cellText = document.createTextNode(date);
-                        if (date === 30) { 
+                        
+                        // Aquí se aplica el destaque dinámico
+                        if (date === highlightDay) { 
                             let span = document.createElement('span');
                             span.classList.add('highlight-date');
                             span.appendChild(cellText);
