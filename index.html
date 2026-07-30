@@ -182,6 +182,20 @@
             50% { transform: translateY(-10px) var(--espejo, scaleX(1)); } 
             100% { transform: translateY(0px) var(--espejo, scaleX(1)); } 
         }
+
+        /* ========================================================================= */
+        /* EFECTO FLOTANTE PARA ICONOS (Se puede desactivar desde aquí)              */
+        /* ========================================================================= */
+        .icon-flotante {
+            display: inline-block; /* Necesario para que el transform funcione en íconos */
+            animation: floatIcon 3s ease-in-out infinite; 
+            /* Para desactivarlo, elimina la línea de arriba (animation) o borra esta clase de los íconos HTML */
+        }
+        @keyframes floatIcon { 
+            0% { transform: translateY(0px); } 
+            50% { transform: translateY(-8px); } 
+            100% { transform: translateY(0px); } 
+        }
     </style>
 </head>
 <body>
@@ -198,7 +212,7 @@
         <div class="modal-content">
             <span class="close-modal" onclick="cerrarModal()">&times;</span>
             <p class="title-fancy" style="font-size: 2.5rem; margin-bottom: 5px;">Datos Bancarios</p>
-            <i class="fas fa-university" style="font-size: 2rem; color: var(--color-naranjita);"></i>
+            <i class="fas fa-university icon-flotante" style="font-size: 2rem; color: var(--color-naranjita);"></i>
             <div class="datos-banco">
                 <p><strong>Banco:</strong> BROU</p>
                 <p><strong>Caja de Ahorro $:</strong> 1234567-8</p>
@@ -240,7 +254,7 @@
                 <section class="gold-section" id="sec-intro" style="margin-top: 30px;">
                     <p style="text-transform: uppercase; letter-spacing: 2px; color: var(--color-naranjita); font-weight: bold;">Mis 15 años</p>
                     <p class="title-fancy" style="font-size: 3.8rem; margin: 10px 0;">Nacha</p>
-                    <p style="font-style: italic;">"Hay momentos inolvidables<br> que se atesoran en el<br> corazón para siempre,<br> acompáñame a vivir el mío."</p>
+                    <p style="font-style: italic;">Hay momentos inolvidables<br> que se atesoran en el<br> corazón para siempre,<br> acompáñame a vivir el mío.</p>
                 </section>
 
                 <div id="sec-foto-principal" class="marco-elegante">
@@ -293,7 +307,7 @@
 
                 <section class="gold-section" id="sec-fiesta">
                     <p class="title-fancy">Fiesta</p>
-                    <i class="fas fa-map-marker-alt" style="font-size: 2.5rem; color: var(--color-naranjita);"></i>
+                    <i class="fas fa-map-marker-alt icon-flotante" style="font-size: 2.5rem; color: var(--color-naranjita);"></i>
                     <p style="font-weight: bold; margin-top:10px;">Salón Aurora Palace</p>
                     <p>Calle Las Flores 123. Montevideo</p>
                     <p style="margin-top: 12px; color: var(--color-naranjita); font-weight: bold;"><i class="far fa-clock"></i> Horario: 20:00 hs puntual</p>
@@ -302,6 +316,7 @@
 
                 <section class="gold-section" id="sec-asistencia">
                     <p class="title-fancy">Asistencia</p>
+                    <i class="fas fa-user-check icon-flotante" style="font-size: 2.5rem; color: var(--color-naranjita);"></i>
                     <p id="texto-asistencia" style="margin-top: 10px;">Tu presencia es muy
 <br>importante para mí!</p>
                     <a href="LINK_DE_TU_WHATSAPP" id="btn-whatsapp" class="button-call" style="display: none;">CONFIRMAR</a>
@@ -310,21 +325,21 @@
 
                 <section class="gold-section" id="sec-cancion" style="display: none;">
                     <p class="title-fancy">Playlist</p>
-                    <i class="fas fa-headphones-alt" style="font-size: 2.2rem; color: var(--color-naranjita);"></i>
+                    <i class="fas fa-headphones-alt icon-flotante" style="font-size: 2.2rem; color: var(--color-naranjita);"></i>
                     <p style="margin-top: 10px;">¿Qué canción no puede<br> faltar en la fiesta?</p>
                     <a href="LINK_FORMULARIO_O_SPOTIFY" class="button-call">SUGERIR CANCIÓN</a>
                 </section>
 
                 <section class="gold-section" id="sec-album" style="display: none;">
                     <p class="title-fancy">Momentos</p>
-                    <i class="fas fa-camera" style="font-size: 2.2rem; color: var(--color-naranjita);"></i>
+                    <i class="fas fa-camera icon-flotante" style="font-size: 2.2rem; color: var(--color-naranjita);"></i>
                     <p style="margin-top: 10px;">Ayúdame a capturar los mejores momentos subiendo tus fotos aquí.</p>
                     <a href="LINK_GOOGLE_PHOTOS_O_DRIVE" class="button-call">COMPARTIR FOTOS</a>
                 </section>
 
                 <section class="gold-section" id="sec-ig" style="display: none;">
                     <p class="title-fancy">Instagram</p>
-                    <i class="fab fa-instagram" style="font-size: 2.8rem; color: var(--color-naranjita);"></i>
+                    <i class="fab fa-instagram icon-flotante" style="font-size: 2.8rem; color: var(--color-naranjita);"></i>
                     <p style="margin-top: 10px;">¡Usa nuestro hashtag para que no me pierda de nada!</p>
                     <p style="font-weight: bold; color: var(--color-verde-agua); font-size: 1.4rem; margin-top: 5px;">#Mis15Martina</p>
                     <a href="LINK_A_TU_PERFIL_O_HASHTAG" class="button-call">IR A INSTAGRAM</a>
@@ -332,13 +347,14 @@
 
                 <section class="gold-section" id="sec-vestimenta">
                     <p class="title-fancy">Vestimenta</p>
-                    <p style="font-weight: bold; text-transform: uppercase; font-size: 1.2rem; margin-bottom: 5px;">Semiformal</p>
+                    <i class="fas fa-user-tie icon-flotante" style="font-size: 2.5rem; color: var(--color-naranjita);"></i>
+                    <p style="font-weight: bold; text-transform: uppercase; font-size: 1.2rem; margin-bottom: 5px; margin-top: 10px;">Semiformal</p>
                     <p>(corto)</p>
                 </section>
 
                 <section class="gold-section" id="sec-regalo">
                     <p class="title-fancy">Regalo</p>
-                    <i class="fas fa-gift" style="font-size: 2.2rem; color: var(--color-naranjita);"></i>
+                    <i class="fas fa-gift icon-flotante" style="font-size: 2.2rem; color: var(--color-naranjita);"></i>
                     <p style="margin-top: 10px;">Que me acompañes es mi<br>mejor regalo. Si deseas<br> tener un detalle conmigo,<br>podés hacerlo a través<br> de la siguiente cuenta:</p>
                     <button class="button-call" onclick="abrirModal()">VER DATOS</button>
                 </section>
